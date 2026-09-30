@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f4f5f7;
+  --color-panel: #ffffff;
+  --color-border: #d8dde4;
+  --color-border-strong: #c3cad3;
+  --color-ink: #1f2933;
+  --color-ink2: #5b6773;
+  --color-ink3: #8a949f;
+  --color-navy: #1f3a5f;
+  --color-navy-soft: #e8edf4;
+  --color-link: #2f5d9e;
+
+  --color-critical: #a32020;
+  --color-high: #c2410c;
+  --color-medium: #b7791f;
+  --color-low: #3e6b57;
+  --color-info: #5b6773;
+
+  --color-cat-ddos: #9a3b3b;
+  --color-cat-c2: #3b5b92;
+  --color-cat-dga: #7a5c7e;
+  --color-cat-enc: #2f6f73;
+  --color-cat-recon: #8a7a2e;
+  --color-cat-exfil: #b0662a;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --radius-card: 4px;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.45;
+  }
+  * {
+    border-color: var(--color-border);
+  }
+  ::selection {
+    background: #dbe6f4;
+    color: var(--color-navy);
+  }
+}
+
+/* Scrollbars: thin, neutral */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #c3cad3 transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: #c9d0d8;
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@keyframes dw-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 93, 158, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 6px rgba(47, 93, 158, 0);
+  }
+}
+.dw-highlight {
+  animation: dw-pulse-ring 1.6s ease-out infinite;
+  outline: 1px solid var(--color-link);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes dw-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.dw-fade-in {
+  animation: dw-fade-in 0.18s ease-out;
+}
+
+@media print {
+  .dw-no-print {
+    display: none !important;
+  }
+  .dw-print-only {
+    display: block !important;
+  }
+  body {
+    background: #fff;
+  }
+}
